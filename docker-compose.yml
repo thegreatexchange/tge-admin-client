@@ -1,0 +1,19 @@
+ember: &defaults
+  image: danlynn/ember-cli:2.5.1
+  volumes:
+    - .:/myapp
+
+npm:
+  <<: *defaults
+  entrypoint: ['/usr/local/bin/npm']
+
+bower:
+  <<: *defaults
+  entrypoint: ['/usr/local/bin/bower', '--allow-root']
+
+server:
+  <<: *defaults
+  command: server --watcher polling
+  ports:
+    - "4200:4200"
+    - "49152:49152"
