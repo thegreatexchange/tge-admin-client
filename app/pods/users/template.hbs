@@ -1,5 +1,34 @@
+{{#if showHelpMessage}}
 <div class="jumbotron">
   <h1>Manage Users</h1>
   <p>This is where you can manage <strong>users</strong> and <strong>administrators</strong> of the Great Exchange app.</p>
-  <button class="btn btn-lg btn-primary center-block">Get started</button>
+  <button {{action "getStarted"}} class="btn btn-lg btn-primary center-block">Get started</button>
 </div>
+{{else}}
+  <div class="row row-offcanvas row-offcanvas-left">
+    <div class="col-xs-12 col-sm-4">
+      <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-info" {{action "new"}}>
+          <span class="h4"><span class="glyphicon glyphicon-plus"></span> Add User</span>
+        </a>
+        {{#each users as |user|}}
+          {{#link-to 'contacts' class="list-group-item"}}
+            <span class="glyphicon glyphicon-user"></span>
+            <strong>{{user.name}}</strong><br>
+            {{user.email}}
+          {{/link-to}}
+        {{/each}}
+      </div>
+    </div>
+    <div id="item-outlet" class="col-xs-12 col-sm-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span>Add User</span>
+        </div>
+        <div class="panel-body">
+          {{outlet}}
+        </div>
+      </div>
+    </div>
+  </div>
+{{/if}}

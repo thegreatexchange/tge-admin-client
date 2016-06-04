@@ -9,7 +9,9 @@ Router.map(function() {
   this.route('login');
   this.route('contacts');
   this.route('events');
-  this.route('users');
+  this.route('users', function() {
+    this.route('new');
+  });
   this.route('landingPage', {path: '/'});
 });
 
