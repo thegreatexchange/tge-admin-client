@@ -5,30 +5,22 @@
   <button {{action "getStarted"}} class="btn btn-lg btn-primary center-block">Get started</button>
 </div>
 {{else}}
-  <div class="row row-offcanvas row-offcanvas-left">
-    <div class="col-xs-12 col-sm-4">
-      <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-info" {{action "new"}}>
-          <span class="h4"><span class="glyphicon glyphicon-plus"></span> Add User</span>
-        </a>
-        {{#each users as |user|}}
-          {{#link-to 'contacts' class="list-group-item"}}
-            <span class="glyphicon glyphicon-user"></span>
-            <strong>{{user.name}}</strong><br>
-            {{user.email}}
-          {{/link-to}}
-        {{/each}}
+  <div class="row">
+
+    {{#unless outletActive}}
+      <div class={{listClassesXS}}>
+        {{partial "users/list"}}
       </div>
+    {{/unless}}
+
+    <div class={{listClasses}}>
+      {{partial "users/list"}}
     </div>
+
     <div id="item-outlet" class="col-xs-12 col-sm-8">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <span>Add User</span>
-        </div>
-        <div class="panel-body">
-          {{outlet}}
-        </div>
-      </div>
+      {{outlet}}
     </div>
+
   </div>
 {{/if}}
+`

@@ -1,0 +1,12 @@
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-info" {{action "new"}}>
+    <span class="h4"><span class="glyphicon glyphicon-plus"></span> Add User</span>
+  </a>
+  {{#each users as |user|}}
+    {{#link-to 'contacts' class="list-group-item"}}
+      <span class="glyphicon glyphicon-user"></span>
+      <strong>{{user.name}}</strong><br>
+      {{user.email}}
+    {{/link-to}}
+  {{/each}}
+</div>

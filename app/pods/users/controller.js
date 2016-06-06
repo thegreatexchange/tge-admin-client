@@ -2,7 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
+  ////////////////////////////////////////
+  // Properties
+  ////////////////////////////////////////
   showHelpMessage: true,
+  outletActive:    false,
 
   users: [
       { email: 'user1@example.com',  name: 'User One'},
@@ -29,8 +33,34 @@ export default Ember.Controller.extend({
 
   resetProperties: function() {
     this.set('showHelpMessage', true);
+    this.set('outletActive',    false);
   },
+  ////////////////////////////////////////
 
+  ////////////////////////////////////////
+  // Computed Display Properties
+  ////////////////////////////////////////
+  listClassesXS: Ember.computed('outletActive', function() {
+    if (this.get('outletActive')) {
+      return "hidden-xs";
+    } else {
+      return "visible-xs col-xs-12";
+    }
+  }),
+
+  listClasses: Ember.computed('outletActive', function() {
+    if (this.get('outletActive')) {
+      return "hidden-xs col-sm-4 col-scrollable";
+    } else {
+      return "hidden-xs col-sm-12";
+    }
+  }),
+  ////////////////////////////////////////
+
+
+  ////////////////////////////////////////
+  // Actions
+  ////////////////////////////////////////
   actions: {
     getStarted: function() {
       this.set('showHelpMessage', false);
@@ -39,4 +69,6 @@ export default Ember.Controller.extend({
       this.transitionToRoute('users.new');
     }
   }
+  ////////////////////////////////////////
+
 });
