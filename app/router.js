@@ -11,6 +11,7 @@ Router.map(function() {
   this.route('events');
   this.route('users', function() {
     this.route('new');
+    this.route('user', { path: '/:user_id'});
   });
   this.route('landingPage', {path: '/'});
 });

@@ -1,11 +1,9 @@
+
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
       </button>
       {{#link-to "landingPage" class="navbar-brand"}}TGE Admin{{/link-to}}
     </div>
@@ -22,8 +20,8 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-3 col-md-2 sidebar">
-      <ul class="hidden-xs nav nav-sidebar">
+    <div id="sidebar-menu" class="hidden-xs col-sm-3 col-md-2 sidebar">
+      <ul class="nav">
         <li>{{#link-to "contacts"}}Contacts{{/link-to}}</li>
         <li>{{#link-to "events"}}Events{{/link-to}}</li>
         <li>{{#link-to "users"}}Users{{/link-to}}</li>

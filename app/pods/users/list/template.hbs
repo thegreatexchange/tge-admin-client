@@ -1,12 +1,18 @@
+<div class="well">
+  <div class="input-group input-group-lg">
+    <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+    {{input value=filterText type="text" class="form-control" placeholder="Find someone..." }}
+  </div>
+</div>
 <div class="list-group">
-  <a href="#" class="list-group-item list-group-item-info" {{action "new"}}>
-    <span class="h4"><span class="glyphicon glyphicon-plus"></span> Add User</span>
+  <a href="#" class="list-group-item list-group-item-info h4" {{action "new"}}>
+    <span class="glyphicon glyphicon-plus"></span> Add a new user
   </a>
-  {{#each users as |user|}}
-    {{#link-to 'contacts' class="list-group-item"}}
+  {{#each sortedAndFilteredUsers as |user|}}
+    <a class="list-group-item" href="#" {{action "show" user}}>
       <span class="glyphicon glyphicon-user"></span>
       <strong>{{user.name}}</strong><br>
       {{user.email}}
-    {{/link-to}}
+    </a>
   {{/each}}
 </div>
