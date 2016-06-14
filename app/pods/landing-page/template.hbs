@@ -1,5 +1,8 @@
-<div class="jumbotron">
-  <h1>Welcome!</h1>
-  <p>This is the <strong>admin site</strong> for the TGE application. From here you can manage users, contacts, and events for the Great Exchange.</p>
-  <button class="btn btn-lg btn-primary center-block">Get started</button>
-</div>
+{{#if showHelpMessage}}
+  <div class="jumbotron">
+    <h1>Welcome!</h1>
+    <p>This is the <strong>admin site</strong> for the TGE application. From here you can manage users, contacts, and events for the Great Exchange.</p>
+    <button class="btn btn-lg btn-primary center-block" {{action "getStarted"}}>Get started</button>
+  </div>
+{{else}}
+{{/if}}
