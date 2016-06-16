@@ -83,7 +83,7 @@ export default Ember.Controller.extend({
       this.transitionToRoute('users.new');
     },
     show: function(user) {
-      this.transitionToRoute('users.user', user)
+      this.transitionToRoute('users.user', user);
     }
   }
   ////////////////////////////////////////

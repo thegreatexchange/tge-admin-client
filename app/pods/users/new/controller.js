@@ -16,7 +16,7 @@ export default Ember.Controller.extend({
       this.transitionToRoute('users');
     },
     cancel: function() {
-      this.transitionToRoute('users')
+      this.transitionToRoute('users');
     }
   }
   ////////////////////////////////////////

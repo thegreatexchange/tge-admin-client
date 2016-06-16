@@ -80,7 +80,7 @@ export default Ember.Controller.extend({
       this.transitionToRoute('contacts.new');
     },
     show: function(contact) {
-      this.transitionToRoute('contacts.contact', contact)
+      this.transitionToRoute('contacts.contact', contact);
     },
     clearFilter: function(){
       this.set('filterText', null);

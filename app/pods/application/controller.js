@@ -7,7 +7,7 @@ export default Ember.Controller.extend({
   actions: {
     toggleSidebar: function() {
       if (this.get('isCollapsed')) {
-        $('#sidebar-menu').switchClass("col-md-2", "col-md-0",400)
+        this.$('#sidebar-menu').switchClass("col-md-2", "col-md-0",400);
         this.set('isCollapsed', false);
       } else {
         this.set('isCollapsed', true);

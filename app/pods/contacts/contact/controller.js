@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
       this.transitionToRoute('contacts');
     },
     cancel: function() {
-      this.transitionToRoute('contacts')
+      this.transitionToRoute('contacts');
     }
   }
   ////////////////////////////////////////
