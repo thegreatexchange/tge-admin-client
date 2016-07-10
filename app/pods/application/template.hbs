@@ -5,14 +5,23 @@
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
         <span class="glyphicon glyphicon-menu-hamburger"></span>
       </button>
-      {{#link-to "landingPage" class="navbar-brand"}}TGE Admin{{/link-to}}
+      {{#link-to "index" class="navbar-brand"}}TGE Admin{{/link-to}}
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-left">
-        {{#link-to "contacts" tagName="li"}}{{#link-to "contacts"}}Contacts{{/link-to}}{{/link-to}}
-        {{#link-to "events" tagName="li"}}{{#link-to "events"}}Events{{/link-to}}{{/link-to}}
-      </ul>
+      {{#if session.isAuthenticated}}
+        <ul class="nav navbar-nav navbar-left">
+          {{#link-to "contacts" tagName="li"}}{{#link-to "contacts"}}Contacts{{/link-to}}{{/link-to}}
+          {{#link-to "events" tagName="li"}}{{#link-to "events"}}Events{{/link-to}}{{/link-to}}
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li> <a {{action 'invalidateSession'}}>Logout</a></li>
+        </ul>
+      {{else}}
+        <ul class="nav navbar-nav navbar-right">
+          <li>{{#link-to "login"}}Login{{/link-to}}</li>
+        </ul>
+      {{/if}}
     </div>
   </div>
 </nav>

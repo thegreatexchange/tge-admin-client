@@ -16,7 +16,7 @@ Router.map(function() {
     this.route('new');
     this.route('user', { path: '/:user_id' });
   });
-  this.route('landingPage', { path: '/' });
+  this.route('landingPage', { path: '/welcome' });
 });
 
 export default Router;
