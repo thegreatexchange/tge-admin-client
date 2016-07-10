@@ -19,7 +19,7 @@ export default Ember.Route.extend(
   // Lifecycle hooks
   ////////////////////////////////////////
   beforeModel(transition) {
-    if (!this.get('session.isAuthenticated') && transition.targetName != 'login') {
+    if (!this.get('session.isAuthenticated') && transition.targetName !== 'login') {
       return this.transitionTo('login');
     }
   }
