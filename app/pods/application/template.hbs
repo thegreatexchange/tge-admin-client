@@ -15,11 +15,11 @@
           {{#link-to "events" tagName="li"}}{{#link-to "events"}}Events{{/link-to}}{{/link-to}}
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li> <a {{action 'invalidateSession'}}>Logout</a></li>
+          <li> <a {{action 'invalidateSession'}}>Sign out</a></li>
         </ul>
       {{else}}
         <ul class="nav navbar-nav navbar-right">
-          <li>{{#link-to "login"}}Login{{/link-to}}</li>
+          <li>{{#link-to "login"}}Sign in{{/link-to}}</li>
         </ul>
       {{/if}}
     </div>
