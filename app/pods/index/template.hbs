@@ -1,17 +1,25 @@
-{{#if showHelpMessage}}
-  <div class="jumbotron">
-    <h1>Welcome!</h1>
-    <p>This is the TGE admin application. From here you can manage contacts and events for the Great Exchange.</p>
-    <button class="btn btn-lg btn-primary center-block" {{action "getStarted"}}>Get started</button>
-  </div>
+{{#if session.isAuthenticated}}
+  {{#if showHelpMessage}}
+    <div class="jumbotron">
+      <h1>Welcome!</h1>
+      <p>This is the TGE admin application. From here you can manage contacts and events for the Great Exchange.</p>
+      <button class="btn btn-lg btn-primary center-block" {{action "getStarted"}}>Get started</button>
+    </div>
+  {{else}}
+    <div class="jumbotron" style="text-align: center;">
+      <p><strong>Contacts</strong> can receive notifications about TGE events.</p>
+      <div class="form-group">
+        {{#link-to "contacts.new" class="btn btn-primary btn-lg"}}<span class="glyphicon glyphicon-plus"></span> Add a new contact{{/link-to}}
+      </div>
+      <div class="form-group">
+        {{#link-to "contacts" class="btn btn-default btn-lg"}}<span class="glyphicon glyphicon-search"></span> Find someone{{/link-to}}
+      </div>
+    </div>
+  {{/if}}
 {{else}}
-  <div class="jumbotron" style="text-align: center;">
-    <p><strong>Contacts</strong> can receive notifications about TGE events.</p>
-    <div class="form-group">
-      {{#link-to "contacts.new" class="btn btn-primary btn-lg"}}<span class="glyphicon glyphicon-plus"></span> Add a new contact{{/link-to}}
-    </div>
-    <div class="form-group">
-      {{#link-to "contacts" class="btn btn-default btn-lg"}}<span class="glyphicon glyphicon-search"></span> Find someone{{/link-to}}
-    </div>
+  <div class="jumbotron">
+    <h1>TGE Admin</h1>
+    <p>You must be signed in to access the admin application.</p>
+    {{#link-to "login" class="btn btn-lg btn-primary"}}Sign in{{/link-to}}
   </div>
 {{/if}}
