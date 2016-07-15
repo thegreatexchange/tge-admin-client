@@ -30,13 +30,13 @@ module.exports = function(environment) {
     passwordField: 'password',
     tokenPropertyName: 'token',
     authorizationPrefix: 'Bearer ',
-    authorizationHeaderName: 'Authorization',
-    headers: {},
-    refreshAccessTokens: true,
-    serverTokenRefreshEndpoint: '/api/token-refresh/',
-    tokenExpireName: 'exp',
-    refreshLeeway: 0,
-    timeFactor: 1  // example - set to "1000" to convert incoming seconds to milliseconds.
+    authorizationHeaderName: 'Authorization'
+    // headers: {},
+    // refreshAccessTokens: true,
+    // serverTokenRefreshEndpoint: '/api/token-refresh/',
+    // tokenExpireName: 'exp',
+    // refreshLeeway: 0,
+    // timeFactor: 1  // example - set to "1000" to convert incoming seconds to milliseconds.
   };
 
   if (environment === 'development') {
