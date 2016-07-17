@@ -1,3 +1,6 @@
+<div class="page-header">
+  <span class="h2 text-info">Users</span>
+</div>
 <div class="well">
   <div class="input-group input-group-lg">
     <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
@@ -6,7 +9,7 @@
 </div>
 <div class="list-group">
   <a href="#" class="list-group-item list-group-item-info h4" {{action "new"}}>
-    <span class="glyphicon glyphicon-plus"></span> Add a new user
+    <span class="glyphicon glyphicon-plus"></span> Invite a new user
   </a>
   {{#each model as |user|}}
     <a class="list-group-item" href="#" {{action "show" user}}>
