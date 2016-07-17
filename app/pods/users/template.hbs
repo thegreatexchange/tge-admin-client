@@ -1,25 +1,8 @@
-{{#if showHelpMessage}}
-  <div class="jumbotron">
-    <h1>Manage Users</h1>
-    <p>This is where you can manage <strong>users</strong> and <strong>administrators</strong> of the Great Exchange app.</p>
-    <button {{action "getStarted"}} class="btn btn-lg btn-primary center-block">Get started</button>
+<div class="row">
+
+  <div class="col-sm-2"></div>
+  <div id="item-outlet" class="col-xs-12 col-sm-8">
+    {{outlet}}
   </div>
-{{else}}
-  <div class="row">
 
-    {{#unless outletActive}}
-      <div class={{listClassesXS}}>
-        {{partial "users/list"}}
-      </div>
-    {{/unless}}
-
-    <div class={{listClasses}}>
-      {{partial "users/list"}}
-    </div>
-
-    <div id="item-outlet" class="col-xs-12 col-sm-8">
-      {{outlet}}
-    </div>
-
-  </div>
-{{/if}}
+</div>

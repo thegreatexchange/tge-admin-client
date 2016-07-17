@@ -6,7 +6,11 @@ export default Ember.Controller.extend({
   ////////////////////////////////////////
   actions: {
     save: function() {
-      this.transitionToRoute('users');
+      var _this = this;
+      this.get('model').save().then(function(){
+        _this.get('users.model').addObject(_this.get('model'));
+        _this.transitionToRoute('users');
+      })
     },
     cancel: function() {
       this.transitionToRoute('users');

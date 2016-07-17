@@ -1,14 +1,5 @@
-import Ember from 'ember';
+import BaseRoute from '../../routes/base'
 
-export default Ember.Route.extend({
-
-  model() {
-    return this.get('store').findAll('user')
-  },
-
-  setupController(controller, model) {
-    this._super(controller, model);
-    controller.resetProperties();
-  },
+export default BaseRoute.extend({
 
 });
