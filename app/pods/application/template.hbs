@@ -11,7 +11,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       {{#if session.isAuthenticated}}
         <ul class="nav navbar-nav navbar-left">
-          {{#link-to "users" tagName="li"}}{{#link-to "users"}}Users{{/link-to}}{{/link-to}}
+          {{#if session.data.authenticated.is_super}}{{#link-to "users" tagName="li"}}{{#link-to "users"}}Users{{/link-to}}{{/link-to}}{{/if}}
           {{#link-to "contacts" tagName="li"}}{{#link-to "contacts"}}Contacts{{/link-to}}{{/link-to}}
           {{#link-to "events" tagName="li"}}{{#link-to "events"}}Events{{/link-to}}{{/link-to}}
         </ul>
