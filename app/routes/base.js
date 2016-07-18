@@ -9,4 +9,7 @@ export default Ember.Route.extend(
   ////////////////////////////////////////
 {
 
+  deactivate() {
+    this.get('controller').resetProperties();
+  }
 });

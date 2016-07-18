@@ -5,13 +5,27 @@ export default BaseController.extend({
   ////////////////////////////////////////
   // Properties
   ////////////////////////////////////////
+  filterText: null,
+
   resetProperties: function() {
+    this.set('filterText', null)
   },
   ////////////////////////////////////////
 
   ////////////////////////////////////////
-  // Computed Display Properties
+  // Computed Properties
   ////////////////////////////////////////
+  filteredAndSortedList: Ember.computed('model.@.name', 'model.length', 'filterText', function(){
+    var list, _this = this;
+    list = this.get('model');
+    if (this.get('filterText')) {
+      list = list.filter(function(item) {
+        var regex = new RegExp(_this.get('filterText'), 'i');
+        return regex.test(item.get('name'));
+      });
+    }
+    return list.sortBy('name');
+  }),
   ////////////////////////////////////////
 
   ////////////////////////////////////////
@@ -23,6 +37,9 @@ export default BaseController.extend({
     },
     show: function(user) {
       this.transitionToRoute('users.user', user);
+    },
+    clearFilter: function(){
+      this.set('filterText', null);
     }
   }
   ////////////////////////////////////////

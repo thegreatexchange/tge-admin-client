@@ -5,13 +5,18 @@
   <div class="input-group input-group-lg">
     <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
     {{input value=filterText type="text" class="form-control" placeholder="Find someone..." }}
+    {{#if filterText}}
+      <span class="input-group-btn">
+        <button {{action "clearFilter"}} class="btn btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button>
+      </span>
+    {{/if}}
   </div>
 </div>
 <div class="list-group">
   <a href="#" class="list-group-item list-group-item-info h4" {{action "new"}}>
     <span class="glyphicon glyphicon-plus"></span> Invite a new user
   </a>
-  {{#each model as |user|}}
+  {{#each filteredAndSortedList as |user|}}
     <a class="list-group-item" href="#" {{action "show" user}}>
       <span class="glyphicon glyphicon-user"></span>
       <strong>{{user.name}}</strong><br>
