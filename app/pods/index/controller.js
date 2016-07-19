@@ -1,16 +1,14 @@
-import Ember from 'ember';
+import BaseController from '../../controllers/base'
 
-export default Ember.Controller.extend({
+export default BaseController.extend({
   ////////////////////////////////////////
   // Dependencies
   ////////////////////////////////////////
-  session: Ember.inject.service('session'),
   ////////////////////////////////////////
 
   ////////////////////////////////////////
   // Properties
   ////////////////////////////////////////
-  showHelpMessage: true,
 
   resetProperties: function() {
     this.set('showHelpMessage', true);
@@ -21,9 +19,6 @@ export default Ember.Controller.extend({
   // Actions
   ////////////////////////////////////////
   actions: {
-    getStarted: function() {
-      this.set('showHelpMessage', false);
-    }
   }
   ////////////////////////////////////////
 });

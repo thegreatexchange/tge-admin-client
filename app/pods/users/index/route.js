@@ -1,6 +1,6 @@
 import BaseRoute from '../../../routes/base';
 
-export default Ember.Route.extend({
+export default BaseRoute.extend({
 
   model() {
     return this.store.findAll('user');

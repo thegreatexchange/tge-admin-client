@@ -1,5 +1,5 @@
-import BaseController from '../../controllers/base'
+import BaseController from '../../controllers/base';
 
 export default BaseController.extend({
-  
+
 });

@@ -1,4 +1,5 @@
 import BaseController from '../../../controllers/base';
+import Ember from 'ember';
 
 export default BaseController.extend({
 
@@ -8,7 +9,7 @@ export default BaseController.extend({
   filterText: null,
 
   resetProperties: function() {
-    this.set('filterText', null)
+    this.set('filterText', null);
   },
   ////////////////////////////////////////
 
