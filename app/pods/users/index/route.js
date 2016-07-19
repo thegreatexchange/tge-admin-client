@@ -5,4 +5,5 @@ export default BaseRoute.extend({
   model() {
     return this.store.findAll('user');
   }
+
 });

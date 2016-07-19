@@ -9,7 +9,18 @@ export default Ember.Route.extend(
   ////////////////////////////////////////
 {
 
+  ////////////////////////////////////////
+  // Properties
+  ////////////////////////////////////////
+  typeKey:            null,
+  unloadOnDeactivate: true,
+  ////////////////////////////////////////
+
   deactivate() {
     this.get('controller').resetProperties();
+    if (this.get('typeKey') && this.get('unloadOnDeactivate')) {
+      this.store.unloadAll(this.get('typeKey'));
+    }
   }
+
 });
