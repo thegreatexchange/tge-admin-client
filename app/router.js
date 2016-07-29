@@ -7,14 +7,13 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('login', { path: 'sign-in' });
-  this.route('contacts', function() {
-    this.route('new');
-    this.route('contact', { path: '/:contact_id' });
-  });
-  this.route('events');
   this.route('users', function() {
     this.route('new');
     this.route('user', { path: '/:user_id' });
+  });
+  this.route('people', function() {
+    this.route('new');
+    this.route('person', { path: '/:person_id'});
   });
 });
 

@@ -1,13 +1,6 @@
 import BaseController from '../../../controllers/base';
-import Ember          from 'ember';
 
 export default BaseController.extend({
-  ////////////////////////////////////////
-  // Dependencies
-  ////////////////////////////////////////
-  users: Ember.inject.controller('users.index'),
-  ////////////////////////////////////////
-
   ////////////////////////////////////////
   // Actions
   ////////////////////////////////////////
@@ -15,11 +8,11 @@ export default BaseController.extend({
     save: function() {
       var _this = this;
       this.get('model').save().then(function(){
-        _this.transitionToRoute('users.index');
+        _this.transitionToRoute('people.index');
       });
     },
     cancel: function() {
-      this.transitionToRoute('users');
+      this.transitionToRoute('people');
     }
   }
   ////////////////////////////////////////

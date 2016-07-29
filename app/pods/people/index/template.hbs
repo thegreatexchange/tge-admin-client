@@ -1,3 +1,6 @@
+<div class="page-header">
+  <span class="h2 text-info">Contacts</span>
+</div>
 <div class="well">
   <div class="input-group input-group-lg">
     <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
@@ -11,13 +14,13 @@
 </div>
 <div class="list-group">
   <a href="#" class="list-group-item list-group-item-info h4" {{action "new"}}>
-    <span class="glyphicon glyphicon-plus"></span> Add a new contact
+    <span class="glyphicon glyphicon-plus"></span> Add a contact
   </a>
-  {{#each sortedAndFilteredContacts as |contact|}}
-    <a class="list-group-item" href="#" {{action "show" contact}}>
+  {{#each filteredAndSortedList as |person|}}
+    <a class="list-group-item" href="#" {{action "show" person}}>
       <span class="glyphicon glyphicon-user"></span>
-      <strong>{{contact.name}}</strong><br>
-      {{contact.email}}
+      <strong>{{person.name}}</strong><br>
+      {{person.email}}
     </a>
   {{/each}}
 </div>
