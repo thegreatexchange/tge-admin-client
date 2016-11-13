@@ -59,8 +59,12 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
   }
 
-  if (environment === 'production') {
+  if (environment === 'qa') {
+    ENV.rootURL = '/admin/'
+  }
 
+  if (environment === 'production') {
+    ENV.rootURL = '/admin/'
   }
 
   return ENV;

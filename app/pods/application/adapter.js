@@ -5,7 +5,7 @@ import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 
 export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
   authorizer: 'authorizer:token',
-  namespace: 'api/admin',
+  namespace: 'api/admin-client',
   // if your rails app is on a different port from your ember app
   // this can be helpful for development.
   // in production, the host for both rails and ember should be the same.
