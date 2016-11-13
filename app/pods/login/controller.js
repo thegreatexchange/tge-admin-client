@@ -1,7 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  session: Ember.inject.service(),
+
+  ////////////////////////////////////////
+  // Actions
+  ////////////////////////////////////////
+  session:       Ember.inject.service(),
+  flashMessages: Ember.inject.service(),
+  ////////////////////////////////////////
 
   ////////////////////////////////////////
   // Actions
@@ -11,7 +17,11 @@ export default Ember.Controller.extend({
       var credentials = this.getProperties('identification', 'password'),
         authenticator = 'authenticator:jwt';
 
-      this.get('session').authenticate(authenticator, credentials);
+      this.get('session').authenticate(authenticator, credentials).catch((reason) => {
+        reason.errors.map((error) => {
+          this.get('flashMessages').notifyDanger(error);
+        });
+      });
     }
   }
   ////////////////////////////////////////

@@ -4,14 +4,12 @@
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
         <span class="glyphicon glyphicon-menu-hamburger"></span>
       </button>
-      {{#link-to "index" class="navbar-brand"}}TGE Admin{{/link-to}}
+      {{#link-to "index" class="navbar-brand"}}<img alt="The Great Exchange" src="/assets/images/logo.png" />{{/link-to}}
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       {{#if session.isAuthenticated}}
         <ul class="nav navbar-nav navbar-left">
-          {{#if session.data.authenticated.is_super}}{{#link-to "users" tagName="li"}}{{#link-to "users"}}Users{{/link-to}}{{/link-to}}{{/if}}
-          {{#link-to "people" tagName="li"}}{{#link-to "people"}}Contacts{{/link-to}}{{/link-to}}
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
@@ -33,6 +31,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-12 main">
+      {{flash-messages}}
       {{outlet}}
     </div>
   </div>
