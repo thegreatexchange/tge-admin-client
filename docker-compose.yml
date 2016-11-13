@@ -1,5 +1,5 @@
 ember: &defaults
-  image: danlynn/ember-cli:2.5.1
+  image: danlynn/ember-cli:2.9.1
   volumes:
     - .:/myapp
 
