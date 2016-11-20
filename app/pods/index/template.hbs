@@ -5,30 +5,5 @@
   </div>
   <div class="col-sm-2"></div>
   <div class="col-xs-12 col-sm-8">
-    {{#if session.data.authenticated.is_super}}
-      <div class="panel panel-warning" style="text-align: center;">
-        <div class='panel-body'>
-          <p class="h4 text-warning"><strong>Users</strong> can sign into the app and have access to create and edit events and contacts.</p>
-          <div class="form-group">
-            {{#link-to "users.new" class="btn btn-primary btn-lg"}}<span class="glyphicon glyphicon-plus"></span> Invite a new user{{/link-to}}
-          </div>
-          <div class="form-group">
-            {{#link-to "users.index" class="btn btn-default btn-lg"}}<span class="glyphicon glyphicon-search"></span> Find someone{{/link-to}}
-          </div>
-        </div>
-      </div>
-    {{/if}}
-
-    <div class="panel panel-default" style="text-align: center;">
-      <div class='panel-body'>
-        <p class="h4 text-info"><strong>Contacts</strong> can receive notifications about TGE events.</p>
-        <div class="form-group">
-          {{#link-to "people.new" class="btn btn-primary btn-lg"}}<span class="glyphicon glyphicon-plus"></span> Add a new contact{{/link-to}}
-        </div>
-        <div class="form-group">
-          {{#link-to "people" class="btn btn-default btn-lg"}}<span class="glyphicon glyphicon-search"></span> Find someone{{/link-to}}
-        </div>
-      </div>
-    </div>
   </div>
 </div>
