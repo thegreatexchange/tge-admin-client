@@ -10,8 +10,8 @@
     <div id="navbar" class="navbar-collapse collapse">
       {{#if session.isAuthenticated}}
         <ul class="nav navbar-nav navbar-left">
-          <li><a href="/event/">Event</a></li>
-          <li><a href="/admin/">Admin</a></li>
+          {{#if isAdminAppAuthorized}}<li><a href="/admin/">Admin</a></li>{{/if}}
+          {{#if isEventAppAuthorized}}<li><a href="/event/">Event</a></li>{{/if}}
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">

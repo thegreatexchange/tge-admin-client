@@ -9,6 +9,20 @@ export default Ember.Controller.extend({
   ////////////////////////////////////////
 
   ////////////////////////////////////////
+  // Properties
+  ////////////////////////////////////////
+  authorizations: Ember.computed('session.session.content.authenticated.authorizations.[]', function() {
+    return this.get('session.session.content.authenticated.authorizations');
+  }),
+
+  isAdminAppAuthorized: Ember.computed('authorizations.[]', function() {
+    return this.get('authorizations').includes('app_admin');
+  }),
+  isEventAppAuthorized: Ember.computed('authorizations.[]', function() {
+    return this.get('authorizations').includes('app_event');
+  }),
+  ////////////////////////////////////////
+  ////////////////////////////////////////
   // Actions
   ////////////////////////////////////////
   actions: {
