@@ -4,7 +4,8 @@ export default Ember.Controller.extend({
   ////////////////////////////////////////
   // Dependencies
   ////////////////////////////////////////
-  session: Ember.inject.service('session'),
+  session:     Ember.inject.service(),
+  application: Ember.inject.service(),
   ////////////////////////////////////////
 
   ////////////////////////////////////////
@@ -13,15 +14,6 @@ export default Ember.Controller.extend({
   actions: {
     invalidateSession() {
       this.get('session').invalidate();
-    },
-
-    toggleSidebar: function() {
-      if (this.get('isCollapsed')) {
-        this.$('#sidebar-menu').switchClass("col-md-2", "col-md-0",400);
-        this.set('isCollapsed', false);
-      } else {
-        this.set('isCollapsed', true);
-      }
     }
   }
   ////////////////////////////////////////

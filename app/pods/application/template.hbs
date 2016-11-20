@@ -1,10 +1,10 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top  {{if application.navbarHidden "hidden"}}">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
         <span class="glyphicon glyphicon-menu-hamburger"></span>
       </button>
-      {{#link-to "index" class="navbar-brand"}}<img alt="The Great Exchange" src="images/logo.png" />{{/link-to}}
+      {{#link-to "index" class="navbar-brand"}}<img alt="The Great Exchange" src="/admin/images/logo-sm.png" />{{/link-to}}
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
@@ -31,8 +31,10 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-12 main">
-      {{flash-messages}}
       {{outlet}}
     </div>
+  </div>
+  <div class="row">
+    {{flash-messages}}
   </div>
 </div>

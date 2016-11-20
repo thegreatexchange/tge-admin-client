@@ -5,18 +5,19 @@ export default Ember.Component.extend({
   ////////////////////////////////////////
   // Dependencies
   ////////////////////////////////////////
-  flashMessages: Ember.inject.service('flashMessages'),
+  flashMessagesService: Ember.inject.service('flashMessages'),
   ////////////////////////////////////////
 
   ////////////////////////////////////////
   // Properties
   ////////////////////////////////////////
-  messages: Ember.computed('flashMessages.messages.[]', function() {
-    return this.get('flashMessages.messages');
+  classNames: ['flash-messages'],
+  flashMessages: Ember.computed('flashMessagesService.messages.[]', function() {
+    return this.get('flashMessagesService.messages');
   }),
 
-  hasMessages: Ember.computed('messages.length', function() {
-    return this.get('messages.length') > 0;
+  hasMessages: Ember.computed('flashMessages.length', function() {
+    return this.get('flashMessages.length') > 0;
   })
   ////////////////////////////////////////
 

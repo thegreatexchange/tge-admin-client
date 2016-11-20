@@ -1,7 +1,5 @@
 {{#if hasMessages}}
-  {{#each messages as |message|}}
-    <div class="alert alert-{{message.type}} fade in" role="alert">
-      {{flash-message flashMessage=message}}
-    </div>
+  {{#each flashMessages as |flashMessage|}}
+      {{flash-message flashMessage=flashMessage}}
   {{/each}}
 {{/if}}
