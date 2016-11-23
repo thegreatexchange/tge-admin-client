@@ -1,1 +1,25 @@
-<h1>People</h1>
+<div class="padding-vertical-8"></div>
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-xs-12 col-sm-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">Volunteers</div>
+      <table class="table">
+        <thead>
+          <th>Name</th>
+          <th>Email address</th>
+          <th>Phone number</th>
+        </thead>
+        <tbody>
+          {{#each volunteers as |volunteer|}}
+          <tr>
+            <td>{{volunteer.name}}</td>
+            <td>{{volunteer.email}}</td>
+            <td>{{volunteer.phoneNumber}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
