@@ -5,20 +5,21 @@ export default BaseRoute.extend({
   // Lifecycle hooks
   ////////////////////////////////////////
   model() {
-    return this.store.findAll('person');
+    return Ember.RSVP.all([
+             this.store.findAll('school'),
+             this.store.findAll('ministry')
+           ]);
   },
 
   setupController(controller, model) {
     this._super(controller, model);
-    this.setPeople(controller);
+    this.setOrganizations(controller);
   },
   ////////////////////////////////////////
 
-  setPeople(controller) {
-    let people = [];
-    people.addObjects(this.store.peekAll('person'));
-    people.addObjects(this.store.peekAll('volunteer'));
-    controller.set('people', people);
+  setOrganizations(controller) {
+    controller.set('schools', this.store.peekAll('school'));
+    controller.set('ministries', this.store.peekAll('ministry'));
   } 
 });
 
