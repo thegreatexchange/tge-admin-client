@@ -17,6 +17,12 @@ export default BaseController.extend({
   // Actions
   ////////////////////////////////////////
   actions: {
+    save() {
+
+    },
+    cancel() {
+      this.transitionToRoute('people.index');
+    }
   }
   ////////////////////////////////////////
 });

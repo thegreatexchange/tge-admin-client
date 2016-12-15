@@ -1,1 +1,29 @@
-New
+{{model-errors model=model}}
+<form>
+  <div class="col-md-12">
+    <div class="form-group">
+      {{input value=model.name type="text" class="form-control" placeholder="Name"}}
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="form-group input-group">
+      <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+      {{input value=model.email class="form-control" type="email" placeholder="Email address"}}
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="form-group input-group">
+      <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+      {{input value=model.phoneNumber class="form-control" type="text" placeholder="Phone number"}}
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="form-group">
+      {{textarea class="form-control" value=model.comments cols="80" rows="4" placeholder="Comments"}}
+    </div>
+  </div>
+  <div class="form-actions col-md-12">
+    <button type="submit" class="btn btn-primary" {{action "save"}}>Submit</button>
+    <button class="btn btn-default" {{action "cancel"}}>Cancel</button>
+  </div>
+</form>
