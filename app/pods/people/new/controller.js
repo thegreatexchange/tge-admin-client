@@ -9,10 +9,7 @@ export default BaseController.extend({
   ////////////////////////////////////////
   // Properties
   ////////////////////////////////////////
-  people: [],
-
   resetProperties: function() {
-    this.set('people', []);
   },
   ////////////////////////////////////////
 
@@ -20,9 +17,7 @@ export default BaseController.extend({
   // Actions
   ////////////////////////////////////////
   actions: {
-    new() {
-      this.transitionToRoute('people.new');
-    }
   }
   ////////////////////////////////////////
 });
+

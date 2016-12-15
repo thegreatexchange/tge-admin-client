@@ -1,6 +1,6 @@
 <div class="padding-vertical-8"></div>
 <div class="row">
-  <div class="col-xs-12">
+  <div class="col-xs-12 col-sm-6">
     <div class="panel panel-default">
       <table class="table table-striped">
         <thead>
@@ -10,6 +10,22 @@
           {{#each schools as |school|}}
           <tr>
             <td>{{school.name}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-6">
+    <div class="panel panel-default">
+      <table class="table table-striped">
+        <thead>
+          <th>Ministry</th>
+        </thead>
+        <tbody>
+          {{#each ministries as |ministry|}}
+          <tr>
+            <td>{{ministry.name}}</td>
           </tr>
           {{/each}}
         </tbody>
