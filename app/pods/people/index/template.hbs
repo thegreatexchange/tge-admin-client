@@ -1,21 +1,21 @@
 <div class="padding-vertical-8"></div>
 <div class="row">
-  <div class="col-sm-2"></div>
-  <div class="col-xs-12 col-sm-8">
+  <div class="col-xs-12">
     <div class="panel panel-default">
-      <div class="panel-heading">Volunteers</div>
-      <table class="table">
+      <table class="table table-striped">
         <thead>
           <th>Name</th>
           <th>Email address</th>
           <th>Phone number</th>
+          <th>Type</th>
         </thead>
         <tbody>
-          {{#each volunteers as |volunteer|}}
+          {{#each people as |person|}}
           <tr>
-            <td>{{volunteer.name}}</td>
-            <td>{{volunteer.email}}</td>
-            <td>{{volunteer.phoneNumber}}</td>
+            <td>{{person.name}}</td>
+            <td>{{person.email}}</td>
+            <td>{{person.phoneNumber}}</td>
+            <td>{{person.type}}</td>
           </tr>
           {{/each}}
         </tbody>

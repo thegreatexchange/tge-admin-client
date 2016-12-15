@@ -16,6 +16,7 @@ Router.map(function() {
     this.route('new');
     this.route('person', { path: '/:person_id'});
   });
+  this.route('organizations', function() {});
 });
 
 export default Router;

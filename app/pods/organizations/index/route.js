@@ -21,3 +21,4 @@ export default BaseRoute.extend({
     controller.set('people', people);
   } 
 });
+

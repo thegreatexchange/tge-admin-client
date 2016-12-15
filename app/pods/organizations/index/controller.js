@@ -9,10 +9,12 @@ export default BaseController.extend({
   ////////////////////////////////////////
   // Properties
   ////////////////////////////////////////
-  people: [],
+  schools:    [],
+  ministries: [],
 
   resetProperties: function() {
-    this.set('people', []);
+    this.set('schools',    []);
+    this.set('ministries', []);
   },
   ////////////////////////////////////////
 
@@ -23,3 +25,4 @@ export default BaseController.extend({
   }
   ////////////////////////////////////////
 });
+
