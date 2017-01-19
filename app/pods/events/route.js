@@ -15,6 +15,11 @@ export default BaseRoute.extend({
   ////////////////////////////////////////
   afterModel() {
     return this.store.findAll('organization');
+  },
+
+  setupController(controller, model) {
+    this._super(controller,model);
+    controller.set('organizations', this.store.peekAll('organization'));
   }
   ////////////////////////////////////////
 });

@@ -4,6 +4,7 @@ export default BaseController.extend({
   ////////////////////////////////////////
   // Dependencies
   ////////////////////////////////////////
+  events: Ember.inject.controller('events'),
   ////////////////////////////////////////
 
   ////////////////////////////////////////
@@ -28,6 +29,9 @@ export default BaseController.extend({
     },
     cancel() {
       this.transitionToRoute('events.index');
+    },
+    organizationChanged(organization) {
+      this.set('model.organization', organization)
     }
   }
   ////////////////////////////////////////
