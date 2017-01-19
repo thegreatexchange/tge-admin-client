@@ -4,7 +4,7 @@ export default BaseRoute.extend({
   ////////////////////////////////////////
   // Properties
   ////////////////////////////////////////
-  typeKey:            'person',
+  typeKey:            'organization',
   unloadOnDeactivate: true,
   ////////////////////////////////////////
 
@@ -16,4 +16,5 @@ export default BaseRoute.extend({
   }
   ////////////////////////////////////////
 });
+
 
