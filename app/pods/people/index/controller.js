@@ -25,6 +25,9 @@ export default BaseController.extend({
   actions: {
     new() {
       this.transitionToRoute('people.new');
+    },
+    edit(person) {
+      this.transitionToRoute('people.person', person);
     }
   }
   ////////////////////////////////////////
