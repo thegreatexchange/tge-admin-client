@@ -9,7 +9,6 @@ export default BaseController.extend({
   ////////////////////////////////////////
   // Properties
   ////////////////////////////////////////
-
   resetProperties: function() {
   },
   ////////////////////////////////////////
@@ -18,13 +17,21 @@ export default BaseController.extend({
   // Actions
   ////////////////////////////////////////
   actions: {
-    new() {
-      this.transitionToRoute('organizations.new');
+    save() {
+      this.get('model').save().then((model) => {
+        let message;
+        this.transitionToRoute('organizations.index');
+        message = model.get('name');
+        message = message + ' has been updated successfully.';
+        this.get('flashMessages').notifySuccess(message);
+      });
     },
-    edit(organization) {
-      this.transitionToRoute('organizations.organization', organization);
+    cancel() {
+      this.transitionToRoute('organizations.index');
     }
   }
   ////////////////////////////////////////
 });
+
+
 

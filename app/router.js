@@ -14,10 +14,11 @@ Router.map(function() {
   });
   this.route('people', function() {
     this.route('new');
-    this.route('person', { path: '/:person_id'});
+    this.route('person', { path: '/:person_id' });
   });
   this.route('organizations', function() {
     this.route('new');
+    this.route('organization', { path: '/:organization_id' });
   });
 });
 

@@ -18,7 +18,7 @@
         </thead>
         <tbody>
           {{#each model as |organization|}}
-          <tr>
+          <tr {{action 'edit' organization}}>
             <td>{{organization.name}}</td>
           </tr>
           {{/each}}
