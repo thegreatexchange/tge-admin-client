@@ -33,20 +33,22 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-12 main">
-      <div class="row">
-        <div class="padding-vertical-34"></div>
-        <div class="col-xs-12">
-          {{#if session.isAuthenticated}}
+      {{#if session.isAuthenticated}}
+        <div class="row">
+          <div class="padding-vertical-34"></div>
+          <div class="col-xs-12">
             <ul class="nav nav-tabs">
-              {{#link-to "index" tagName="li"}}{{#link-to "index"}}<span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>{{/link-to}}{{/link-to}}
+              {{#link-to "index" tagName="li"}}{{#link-to "index"}}<span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> Dashboard{{/link-to}}{{/link-to}}
               <li><a href="/admin/#"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Events</a></li>
               {{#link-to "people" tagName="li"}}{{#link-to "people"}}<span class="glyphicon glyphicon-user" aria-hidden="true"></span> People{{/link-to}}{{/link-to}}
               {{#link-to "organizations" tagName="li"}}{{#link-to "organizations"}}<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Organizations{{/link-to}}{{/link-to}}
             </ul>
-          {{/if}}
-          {{outlet}}
+            {{outlet}}
+          </div>
         </div>
-      </div>
+      {{else}}
+        {{outlet}}
+      {{/if}}
     </div>
   </div>
   <div class="row">

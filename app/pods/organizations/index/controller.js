@@ -9,12 +9,8 @@ export default BaseController.extend({
   ////////////////////////////////////////
   // Properties
   ////////////////////////////////////////
-  schools:    [],
-  ministries: [],
 
   resetProperties: function() {
-    this.set('schools',    []);
-    this.set('ministries', []);
   },
   ////////////////////////////////////////
 
