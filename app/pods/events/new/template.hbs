@@ -1,0 +1,20 @@
+<div class="padding-vertical-8"></div>
+{{model-errors model=model}}
+<form>
+  <div class="col-md-12">
+    <div class="form-group">
+      {{input value=model.name type="text" class="form-control" placeholder="Name"}}
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="form-group">
+      {{textarea class="form-control" value=model.description cols="80" rows="4" placeholder="Description"}}
+    </div>
+  </div>
+  <div class="form-actions col-md-12">
+    <button type="submit" class="btn btn-primary" {{action "save"}}>Submit</button>
+    <button class="btn btn-default" {{action "cancel"}}>Cancel</button>
+  </div>
+</form>
+
+
