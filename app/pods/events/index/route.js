@@ -6,7 +6,7 @@ export default BaseRoute.extend({
   // Lifecycle hooks
   ////////////////////////////////////////
   model() {
-    return this.store.findAll('event')
+    return this.store.findAll('event');
   }
   ////////////////////////////////////////
 });

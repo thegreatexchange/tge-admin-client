@@ -1,5 +1,4 @@
-import BaseRoute from '../../routes/base';
-import Ember     from 'ember';
+import BaseRoute from '../../../routes/base';
 
 export default BaseRoute.extend({
   ////////////////////////////////////////
@@ -7,16 +6,14 @@ export default BaseRoute.extend({
   ////////////////////////////////////////
   typeKey:            'event',
   unloadOnDeactivate: true,
-  dependentTypeKeys:  ['organization'],
   ////////////////////////////////////////
 
   ////////////////////////////////////////
   // Lifecycle hooks
   ////////////////////////////////////////
-  afterModel() {
-    return this.store.findAll('organization');
-  }
   ////////////////////////////////////////
 });
+
+
 
 
