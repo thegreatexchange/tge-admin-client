@@ -9,6 +9,7 @@ export default BaseController.extend({
   ////////////////////////////////////////
   // Properties
   ////////////////////////////////////////
+
   resetProperties: function() {
   },
   ////////////////////////////////////////
@@ -17,17 +18,11 @@ export default BaseController.extend({
   // Actions
   ////////////////////////////////////////
   actions: {
-    save() {
-      this.get('model').save().then((model) => {
-        let message;
-        this.transitionToRoute('organizations.index');
-        message = model.get('name');
-        message = message + ' has been created successfully.';
-        this.get('flashMessages').notifySuccess(message);
-      });
+    new() {
+      this.transitionToRoute('events.new');
     },
-    cancel() {
-      this.transitionToRoute('organizations.index');
+    edit(event) {
+      this.transitionToRoute('events.event', event);
     }
   }
   ////////////////////////////////////////

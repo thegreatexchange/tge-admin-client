@@ -20,6 +20,7 @@ Router.map(function() {
     this.route('new');
     this.route('organization', { path: '/:organization_id' });
   });
+  this.route('events', function() {});
 });
 
 export default Router;

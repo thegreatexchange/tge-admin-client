@@ -1,4 +1,4 @@
-import BaseController from '../../../controllers/base';
+import BaseController from '../../controllers/base';
 
 export default BaseController.extend({
   ////////////////////////////////////////
@@ -9,6 +9,7 @@ export default BaseController.extend({
   ////////////////////////////////////////
   // Properties
   ////////////////////////////////////////
+
   resetProperties: function() {
   },
   ////////////////////////////////////////
@@ -17,20 +18,7 @@ export default BaseController.extend({
   // Actions
   ////////////////////////////////////////
   actions: {
-    save() {
-      this.get('model').save().then((model) => {
-        let message;
-        this.transitionToRoute('organizations.index');
-        message = model.get('name');
-        message = message + ' has been created successfully.';
-        this.get('flashMessages').notifySuccess(message);
-      });
-    },
-    cancel() {
-      this.transitionToRoute('organizations.index');
-    }
   }
   ////////////////////////////////////////
 });
-
 

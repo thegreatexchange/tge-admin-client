@@ -1,0 +1,35 @@
+<div class="padding-vertical-8"></div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="btn-group right" role="group">
+      <button type="button" class="btn btn-primary" {{action "new"}}><span class="glyphicon glyphicon-plus"></span> New event</button>
+      <button type="button" class="btn btn-default" disabled=disabled><span class="glyphicon glyphicon-upload"></span> Upload CSV</button>
+      <button type="button" class="btn btn-default" disabled=disabled><span class="glyphicon glyphicon-download"></span> Download</button>
+    </div>
+  </div>
+</div>
+<div class="padding-vertical-8"></div>
+<div class="row">
+  <div class="col-xs-12 col-sm-12">
+    <div class="panel panel-default">
+      <table class="table table-striped">
+        <thead>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Organization</th>
+        </thead>
+        <tbody>
+          {{#each model as |event|}}
+          <tr {{action 'edit' event}}>
+            <td>{{event.name}}</td>
+            <td>{{event.startsAt}}</td>
+            <td>{{event.organization.name}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+

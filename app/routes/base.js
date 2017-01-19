@@ -19,6 +19,7 @@ export default Ember.Route.extend(
   ////////////////////////////////////////
   typeKey:            null,
   unloadOnDeactivate: false,
+  dependentTypeKeys:  [],
   ////////////////////////////////////////
 
   ////////////////////////////////////////
@@ -37,6 +38,9 @@ export default Ember.Route.extend(
     this.get('controller').resetProperties();
     if (this.get('typeKey') && this.get('unloadOnDeactivate')) {
       this.store.unloadAll(this.get('typeKey'));
+      this.get('dependentTypeKeys').forEach((typeKey) => {
+        this.store.unloadAll(typeKey);
+      });
     }
   },
   ////////////////////////////////////////
