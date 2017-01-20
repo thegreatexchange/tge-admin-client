@@ -7,8 +7,9 @@
     </div>
   </div>
   <div class="col-md-12">
-    <div class="form-group">
-      {{textarea class="form-control" value=model.description cols="80" rows="4" placeholder="Description"}}
+    <div class="form-group input-group">
+      <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+     {{bootstrap-datepicker value=model.startsAt class="form-control"}}
     </div>
   </div>
   <div class="col-md-12">
@@ -20,6 +21,11 @@
           {{#xs.option value=organization}}{{organization.name}}{{/xs.option}}
         {{/each}}
       {{/x-select}}
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="form-group">
+      {{textarea class="form-control" value=model.description cols="80" rows="4" placeholder="Description"}}
     </div>
   </div>
   <div class="form-actions col-md-12">

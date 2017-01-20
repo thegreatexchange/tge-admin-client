@@ -19,10 +19,10 @@
           <th>Organization</th>
         </thead>
         <tbody>
-          {{#each model as |event|}}
+          {{#each list as |event|}}
           <tr {{action 'edit' event}}>
             <td>{{event.name}}</td>
-            <td>{{event.startsAt}}</td>
+            <td>{{moment-format event.startsAt 'MM-DD-YYYY'}}</td>
             <td>{{event.organization.name}}</td>
           </tr>
           {{/each}}

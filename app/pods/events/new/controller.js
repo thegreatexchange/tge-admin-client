@@ -29,6 +29,9 @@ export default BaseController.extend({
     },
     cancel() {
       this.transitionToRoute('events.index');
+    },
+    organizationChanged(organization) {
+      this.set('model.organization', organization)
     }
   }
   ////////////////////////////////////////
