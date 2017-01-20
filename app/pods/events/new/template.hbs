@@ -14,9 +14,9 @@
   </div>
   <div class="col-md-12">
     <div class="form-group input-group">
-      <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
+      <span class="input-group-addon"><span class="glyphicon glyphicon-star"></span></span>
       {{#x-select value=model.organization.content action="organizationChanged" class="form-control" as |xs|}}
-        <option value>Select organization</option>
+        <option value>Select sponsor organization</option>
         {{#each events.organizations as |organization|}}
           {{#xs.option value=organization}}{{organization.name}}{{/xs.option}}
         {{/each}}
