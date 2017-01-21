@@ -12,4 +12,6 @@ export default DS.Model.extend({
   isEmailEnabled: DS.attr('boolean', { defaultValue: false }),
   isTextEnabled:  DS.attr('boolean', { defaultValue: false }),
 
+  organizationMemberships: DS.hasMany('organizationMembership')
+
 });

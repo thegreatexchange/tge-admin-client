@@ -6,7 +6,19 @@ export default BaseRoute.extend({
   ////////////////////////////////////////
   typeKey:            'person',
   unloadOnDeactivate: true,
-  dependentTypeKeys:  []
+  dependentTypeKeys:  [],
   ////////////////////////////////////////
 
+  ////////////////////////////////////////
+  // Lifecycle hooks
+  ////////////////////////////////////////
+  afterModel() {
+    return this.store.findAll('organization');
+  },
+
+  setupController(controller, model) {
+    this._super(controller,model);
+    controller.set('organizations', this.store.peekAll('organization'));
+  }
+  ////////////////////////////////////////
 });

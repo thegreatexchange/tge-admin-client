@@ -33,6 +33,12 @@ export default Ember.Component.extend({
     }
     return glyphicon;
   }),
+
+  didRender() {
+    if (!this.get('flashMessage.persist')) {
+      Ember.run.later(() => { this.send('dismiss') }, 3000);
+    }
+  },
   ////////////////////////////////////////
 
   ////////////////////////////////////////

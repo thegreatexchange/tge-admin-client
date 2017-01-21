@@ -4,31 +4,35 @@ export default Ember.Service.extend({
 
   messages: [],
 
-  notifySuccess(message) {
+  notifySuccess(message, persist=false) {
     this.get('messages').addObject({
       message: message,
-      type:    'success'
+      type:    'success',
+      persist: persist
     });
   },
 
-  notifyInfo(message) {
+  notifyInfo(message, persist=false) {
     this.get('messages').addObject({
       message: message,
-      type:    'info'
+      type:    'info',
+      persist: persist
     });
   },
 
-  notifyWarning(message) {
+  notifyWarning(message, persist=false) {
     this.get('messages').addObject({
       message: message,
-      type:    'warning'
+      type:    'warning',
+      persist: persist
     });
   },
 
-  notifyDanger(message) {
+  notifyDanger(message, persist=false) {
     this.get('messages').addObject({
       message: message,
-      type:    'danger'
+      type:    'danger',
+      persist: persist
     });
   },
 

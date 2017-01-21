@@ -7,7 +7,8 @@ export default BaseRoute.extend({
   ////////////////////////////////////////
   typeKey:            'event',
   unloadOnDeactivate: true,
-  dependentTypeKeys:  ['organization'],
+  // TODO: BDW - fix timing issue on unload.
+  // dependentTypeKeys:  ['organization'],
   ////////////////////////////////////////
 
   ////////////////////////////////////////

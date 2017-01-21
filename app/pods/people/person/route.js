@@ -4,12 +4,10 @@ export default BaseRoute.extend({
   ////////////////////////////////////////
   // Lifecycle hooks
   ////////////////////////////////////////
-  model() {
+  afterModel(model) {
+    return this.store.query('organizationMembership', { person_id: model.get('id') });
   },
-
-  setupController(controller, model) {
-    this._super(controller, model);
-  }
   ////////////////////////////////////////
+
 });
 

@@ -8,19 +8,20 @@
   </div>
   <div class="col-md-12">
     <div class="form-group input-group">
-      <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+      <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span> Event date</span>
      {{bootstrap-datepicker value=model.startsAt class="form-control"}}
     </div>
   </div>
   <div class="col-md-12">
     <div class="form-group input-group">
-      <span class="input-group-addon"><span class="glyphicon glyphicon-star"></span></span>
-      {{#x-select value=model.organization.content action="organizationChanged" class="form-control" as |xs|}}
-        <option value>Select sponsor organization</option>
-        {{#each events.organizations as |organization|}}
-          {{#xs.option value=organization}}{{organization.name}}{{/xs.option}}
-        {{/each}}
-      {{/x-select}}
+      <span class="input-group-addon"><span class="glyphicon glyphicon-star"></span> Sponsor</span>
+      {{#power-select options=events.organizations
+                      selected=model.organization.content
+                      placeholder="Select sponsor organization"
+                      searchField="name"
+                      onchange=(action "organizationChanged") as |organization|}}
+        {{organization.name}}
+      {{/power-select}}
     </div>
   </div>
   <div class="col-md-12">

@@ -9,8 +9,10 @@ export default BaseController.extend({
   ////////////////////////////////////////
   // Properties
   ////////////////////////////////////////
+  organizations: [],
 
   resetProperties: function() {
+    this.set('organizations', []);
   },
   ////////////////////////////////////////
 

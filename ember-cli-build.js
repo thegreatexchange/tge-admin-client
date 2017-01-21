@@ -47,6 +47,7 @@ module.exports = function(defaults) {
         'bower_components/jasny-bootstrap/less'
       ]
     }
+
   });
 
   ////////////////////////////////////////

@@ -18,8 +18,8 @@ export default Ember.Route.extend(
   // Properties
   ////////////////////////////////////////
   typeKey:            null,
-  unloadOnDeactivate: false,
   dependentTypeKeys:  [],
+  unloadOnDeactivate: false,
   ////////////////////////////////////////
 
   ////////////////////////////////////////
