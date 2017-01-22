@@ -32,6 +32,16 @@ export default BaseController.extend({
     },
     organizationChanged(organization) {
       this.set('model.organization', organization)
+    },
+    destroy() {
+      name = this.get('model.name');
+      let didConfirm = window.confirm(`Are you sure you want to remove ${name}?`);
+      if (didConfirm){
+        this.get('model').destroyRecord().then( () => {
+          this.transitionToRoute('events.index');
+          this.get('flashMessages').notifySuccess(`${name} has been removed.`);
+        });
+      }
     }
   }
   ////////////////////////////////////////

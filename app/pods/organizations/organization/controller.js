@@ -28,6 +28,16 @@ export default BaseController.extend({
     },
     cancel() {
       this.transitionToRoute('organizations.index');
+    },
+    destroy() {
+      name = this.get('model.name');
+      let didConfirm = window.confirm(`Are you sure you want to remove ${name}?`);
+      if (didConfirm){
+        this.get('model').destroyRecord().then( () => {
+          this.transitionToRoute('organizations.index');
+          this.get('flashMessages').notifySuccess(`${name} has been removed.`);
+        });
+      }
     }
   }
   ////////////////////////////////////////

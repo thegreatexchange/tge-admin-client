@@ -65,6 +65,16 @@ export default BaseController.extend({
     },
     removeMembership(membership){
       this._destroyMembershipWithPrompt(membership);
+    },
+    destroy() {
+      name = this.get('model.name');
+      let didConfirm = window.confirm(`Are you sure you want to remove ${name}?`);
+      if (didConfirm){
+        this.get('model').destroyRecord().then( () => {
+          this.transitionToRoute('people.index');
+          this.get('flashMessages').notifySuccess(`${name} has been removed.`);
+        });
+      }
     }
   }
   ////////////////////////////////////////
