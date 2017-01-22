@@ -7,4 +7,5 @@ export default DS.Model.extend({
   locationId: DS.attr('string'),
   name:       DS.attr('string'),
 
+  organizationMemberships: DS.hasMany('organizationMembership')
 });

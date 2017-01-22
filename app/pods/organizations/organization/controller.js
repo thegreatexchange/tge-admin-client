@@ -13,6 +13,21 @@ export default BaseController.extend({
   },
   ////////////////////////////////////////
 
+  _destroyMembershipWithPrompt(membership) {
+    let personName       = membership.get('person.name');
+    let organizationName = membership.get('organization.name')
+
+    let message = "Are you sure you want to remove " + personName + " from " + organizationName + "?";
+    let confirmationResult = window.confirm(message);
+
+    if (confirmationResult) {
+      membership.destroyRecord().then( () => {
+        let message = personName + " has been removed from " + organizationName + ".";
+        this.get('flashMessages').notifySuccess(message);
+      });
+    }
+  },
+
   ////////////////////////////////////////
   // Actions
   ////////////////////////////////////////
@@ -28,6 +43,9 @@ export default BaseController.extend({
     },
     cancel() {
       this.transitionToRoute('organizations.index');
+    },
+    removeMembership(membership){
+      this._destroyMembershipWithPrompt(membership);
     },
     destroy() {
       name = this.get('model.name');

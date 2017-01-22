@@ -11,6 +11,19 @@
     <button class="btn btn-default" {{action "cancel"}}>Cancel</button>
     <button class="btn btn-warning" {{action "destroy"}}>Remove</button>
   </div>
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading h4"><span class="text-info">Members</span></div>
+      <ul class="list-group">
+        {{#each model.organizationMemberships as |membership|}}
+          {{#link-to 'people.person' membership.person.id class="list-group-item"}}
+            {{membership.person.name}}
+            <span class="text-danger right glyphicon glyphicon-remove" {{action "removeMembership" membership bubbles=false}}></span>
+          {{/link-to}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
 </form>
 
 
