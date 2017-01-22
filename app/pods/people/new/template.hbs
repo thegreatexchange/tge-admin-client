@@ -19,8 +19,24 @@
     </div>
   </div>
   <div class="col-md-12">
-    <div class="form-group">
-      {{textarea class="form-control" value=model.comments cols="80" rows="4" placeholder="Comments"}}
+    <div class="panel panel-default">
+      <div class="panel-heading h4"><span class="text-info">Organizations</span></div>
+      <ul class="list-group">
+        {{#each model.organizationMemberships as |membership|}}
+          {{#link-to 'organizations.organization' membership.organization.id class="list-group-item"}}
+            {{membership.organization.name}}
+            <span class="text-danger right glyphicon glyphicon-remove" {{action "removeMembership" membership bubbles=false}}></span>
+          {{/link-to}}
+        {{/each}}
+          <li class="list-group-item">
+            {{#power-select options=availableOrganizations
+                            placeholder="Select organization to add..."
+                            searchField="name"
+                            onchange=(action "addOrganization") as |organization|}}
+              {{organization.name}}
+            {{/power-select}}
+          </li>
+      </ul>
     </div>
   </div>
   <div class="form-actions col-md-12">

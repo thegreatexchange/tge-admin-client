@@ -19,13 +19,8 @@
     </div>
   </div>
   <div class="col-md-12">
-    <div class="form-group">
-      {{textarea class="form-control" value=model.comments cols="80" rows="4" placeholder="Comments"}}
-    </div>
-  </div>
-  <div class="col-md-12">
     <div class="panel panel-default">
-      <div class="panel-heading h4">Organizations</div>
+      <div class="panel-heading h4"><span class="text-info">Organizations</span></div>
       <ul class="list-group">
         {{#each model.organizationMemberships as |membership|}}
           {{#link-to 'organizations.organization' membership.organization.id class="list-group-item"}}
