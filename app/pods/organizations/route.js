@@ -6,7 +6,7 @@ export default BaseRoute.extend({
   // Properties
   ////////////////////////////////////////
   typeKey:            'organization',
-  unloadOnDeactivate: true,
+  unloadOnDeactivate: false,
   dependentTypeKeys:  [],
   ////////////////////////////////////////
 

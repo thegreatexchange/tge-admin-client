@@ -9,12 +9,21 @@ export default BaseController.extend({
   ////////////////////////////////////////
   // Properties
   ////////////////////////////////////////
-  resetProperties: function() {
-  },
+  filterText: '',
 
-  list: Ember.computed('model.@each.name', function() {
-    return this.model.sortBy('name');
+  list: Ember.computed('model.@each.name', 'model.@each.email', 'filterText', function() {
+    let sortedList = this.model.sortBy('name');
+    return sortedList.filter( (e) => {
+      let propertyMap = `${e.get('name')}`;
+      return propertyMap.toLowerCase().indexOf(this.get('filterText').toLowerCase()) !== -1;
+    });
   }),
+
+  isClearFilterDisabled: Ember.computed('filterText', function(){ return !this.get('filterText') }),
+
+  resetProperties: function() {
+    this.set('filterText', '');
+  },
   ////////////////////////////////////////
 
   ////////////////////////////////////////
@@ -26,6 +35,9 @@ export default BaseController.extend({
     },
     edit(event) {
       this.transitionToRoute('events.event', event);
+    },
+    clearFilter() {
+      this.set('filterText', '');
     }
   }
   ////////////////////////////////////////
