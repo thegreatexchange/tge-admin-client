@@ -12,7 +12,7 @@ export default BaseController.extend({
   filterText: '',
 
   list: Ember.computed('model.@each.name', 'model.@each.email', 'filterText', function() {
-    let sortedList = this.model.sortBy('name');
+    let sortedList = this.get('model').sortBy('name');
     return sortedList.filter( (p) => {
       let propertyMap = `${p.get('name')}${p.get('email')}`;
       return propertyMap.toLowerCase().indexOf(this.get('filterText').toLowerCase()) !== -1;

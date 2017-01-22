@@ -9,7 +9,20 @@ export default BaseController.extend({
   ////////////////////////////////////////
   // Properties
   ////////////////////////////////////////
+  filterText: '',
+
+  memberships: Ember.computed('model.organizationMemberships.@each.person.name', 'filterText', function() {
+    let sortedList = this.get('model.organizationMemberships').sortBy('person.name');
+    return sortedList.filter( (p) => {
+      let propertyMap = `${p.get('person.name')}`;
+      return propertyMap.toLowerCase().indexOf(this.get('filterText').toLowerCase()) !== -1;
+    });
+  }),
+
+  isClearFilterDisabled: Ember.computed('filterText', function(){ return !this.get('filterText') }),
+
   resetProperties: function() {
+    this.set('filterText', '');
   },
   ////////////////////////////////////////
 
@@ -28,6 +41,12 @@ export default BaseController.extend({
     }
   },
 
+  _togglePrimary(membership){
+    membership.set('isPrimary', !membership.get('isPrimary'));
+    membership.save().then( () => {
+      this.get('flashMessages').notifySuccess(`${membership.get('person.name')} updated.`);
+    });
+  },
   ////////////////////////////////////////
   // Actions
   ////////////////////////////////////////
@@ -56,6 +75,12 @@ export default BaseController.extend({
           this.get('flashMessages').notifySuccess(`${name} has been removed.`);
         });
       }
+    },
+    togglePrimary(membership){
+      this._togglePrimary(membership);
+    },
+    clearFilter() {
+      this.set('filterText', '');
     }
   }
   ////////////////////////////////////////
