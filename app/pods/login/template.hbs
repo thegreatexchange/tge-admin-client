@@ -1,20 +1,41 @@
 <div class="row">
-  <div class="col-sm-4"></div>
-  <div class="col-xs-12 col-sm-4">
-    <div class="page-header">
-      <span class="h2 text-info">Sign in</span>
-    </div>
-    <form {{action 'authenticate' on='submit'}}>
-      <div class="form-group form-group-lg">
-        <label for="identification">Email</label>
-        {{input id="identification" placeholder="" type="text" value=identification class="form-control"}}
+  <div class="padding-vertical-21"></div>
+  <div class="logo-lg align-text-center padding-vertical-34 hidden-xs">
+    <img  src="/admin/assets/images/logo.png" />
+  </div>
+  <div class="logo-md padding-vertical-21 align-text-center hidden-sm hidden-md hidden-lg">
+    <img alt="The Great Exchange" src="/admin/assets/images/logo-sm.png" />
+  </div>
+  <div class="col-md-4"></div>
+  <div class="col-xs-12 col-md-4">
+    <div class="panel panel-default">
+
+      <div class="panel-heading align-text-center">
+        <h2 class="text-muted">Sign in to your account</h2>
       </div>
 
-      <div class="form-group form-group-lg">
-        <label for="password">Password</label>
-        {{input id="password" placeholder="" type="password" value=password class="form-control"}}
+      <div class="panel-body margin-horizontal-8">
+        <form {{action 'authenticate' on='submit'}}>
+          <div class="form-group input-group input-group-lg padding-vertical-8 margin-vertical-8">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+            {{input id="identification" placeholder="Email address" type="text" value=identification class="form-control"}}
+          </div>
+          <div class="form-group input-group input-group-lg padding-vertical-8 margin-vertical-8">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+            {{input id="password" placeholder="Password" type="password" value=password class="form-control"}}
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-lg">Sign in</button>
+          </div>
+        </form>
       </div>
-      <button type="submit" class="btn btn-primary btn-lg">Sign in</button>
-    </form>
+
+      <div class="panel-footer align-text-center">
+        <div class="margin-vertical-8">
+          <a href="#" class="text-info">Forgot your password?</a>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>

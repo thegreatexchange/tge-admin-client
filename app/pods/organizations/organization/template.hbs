@@ -1,0 +1,46 @@
+<div class="padding-vertical-8"></div>
+{{model-errors model=model}}
+<form>
+  <div class="col-md-12">
+    <div class="form-group">
+      {{input value=model.name type="text" class="form-control" placeholder="Name"}}
+    </div>
+  </div>
+  <div class="form-actions col-md-12">
+    <button type="submit" class="btn btn-primary" {{action "save"}}>Submit</button>
+    <button class="btn btn-default" {{action "cancel"}}>Cancel</button>
+    <button class="btn btn-warning" {{action "destroy"}}>Remove</button>
+  </div>
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading h4"><span class="text-info">Members</span>
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <div class="input-group padding-horizontal-5">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
+            {{input value=filterText type="text" class="form-control" placeholder="Start typing to filter..."}}
+            <span class="input-group-btn">
+              <button class="btn btn-warning" type="button" disabled={{if isClearFilterDisabled "disabled"}} {{action "clearFilter"}}>
+                <span class="glyphicon glyphicon-remove"></span>
+              </button>
+            </span>
+          </div>
+        </li>
+        {{#each memberships as |membership|}}
+          {{#link-to 'people.person' membership.person.id class="list-group-item"}}
+            {{#if membership.isPrimary}}
+              <span class="text-primary left glyphicon glyphicon-star padding-horizontal-5" {{action "togglePrimary" membership bubbles=false}}></span>
+            {{else}}
+              <span class="text-info left glyphicon glyphicon-star-empty padding-horizontal-5" {{action "togglePrimary" membership bubbles=false}}></span>
+            {{/if}}
+            {{membership.person.name}}
+            <span class="text-danger right glyphicon glyphicon-remove" {{action "removeMembership" membership bubbles=false}}></span>
+          {{/link-to}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</form>
+
+

@@ -2,47 +2,49 @@ import BaseController from '../../../controllers/base';
 import Ember from 'ember';
 
 export default BaseController.extend({
+  ////////////////////////////////////////
+  // Dependencies
+  ////////////////////////////////////////
+  ////////////////////////////////////////
 
   ////////////////////////////////////////
   // Properties
   ////////////////////////////////////////
-  filterText: null,
+  filterText: '',
+
+  list: Ember.computed('model.@each.name', 'model.@each.email', 'filterText', function() {
+    let sortedList = this.get('model').sortBy('name');
+    return sortedList.filter( (p) => {
+      let propertyMap = `${p.get('name')}${p.get('email')}`;
+      return propertyMap.toLowerCase().indexOf(this.get('filterText').toLowerCase()) !== -1;
+    });
+  }),
+
+  isClearFilterDisabled: Ember.computed('filterText', function(){ return !this.get('filterText'); }),
 
   resetProperties: function() {
-    this.set('filterText', null);
+    this.set('filterText', '');
   },
   ////////////////////////////////////////
 
   ////////////////////////////////////////
-  // Computed Properties
+  // Public Functions
   ////////////////////////////////////////
-  filteredAndSortedList: Ember.computed('model.@.name', 'model.length', 'filterText', function(){
-    var list, _this = this;
-    list = this.get('model');
-    if (this.get('filterText')) {
-      list = list.filter(function(item) {
-        var regex = new RegExp(_this.get('filterText'), 'i');
-        return regex.test(item.get('name'));
-      });
-    }
-    return list.sortBy('name');
-  }),
   ////////////////////////////////////////
 
   ////////////////////////////////////////
   // Actions
   ////////////////////////////////////////
   actions: {
-    new: function() {
+    new() {
       this.transitionToRoute('people.new');
     },
-    show: function(person) {
+    edit(person) {
       this.transitionToRoute('people.person', person);
     },
-    clearFilter: function(){
-      this.set('filterText', null);
+    clearFilter() {
+      this.set('filterText', '');
     }
   }
   ////////////////////////////////////////
-
 });

@@ -1,17 +1,17 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top  {{if application.navbarHidden "hidden"}}">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
         <span class="glyphicon glyphicon-menu-hamburger"></span>
       </button>
-      {{#link-to "index" class="navbar-brand"}}TGE Admin{{/link-to}}
+      {{#link-to "index" class="navbar-brand"}}<img alt="The Great Exchange" src="/admin/images/logo-sm.png" />{{/link-to}}
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       {{#if session.isAuthenticated}}
         <ul class="nav navbar-nav navbar-left">
-          {{#if session.data.authenticated.is_super}}{{#link-to "users" tagName="li"}}{{#link-to "users"}}Users{{/link-to}}{{/link-to}}{{/if}}
-          {{#link-to "people" tagName="li"}}{{#link-to "people"}}Contacts{{/link-to}}{{/link-to}}
+          {{#if isAdminAppAuthorized}}<li><a href="/admin/">Admin</a></li>{{/if}}
+          {{#if isEventAppAuthorized}}<li><a href="/event/">Event</a></li>{{/if}}
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">
@@ -33,7 +33,26 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-12 main">
-      {{outlet}}
+      {{#if session.isAuthenticated}}
+        <div class="row">
+          <div class="padding-vertical-34"></div>
+          <div class="col-xs-12">
+            <ul class="nav nav-tabs">
+              {{#link-to "index" tagName="li"}}{{#link-to "index"}}<span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> Dashboard{{/link-to}}{{/link-to}}
+              {{#link-to "events" tagName="li"}}{{#link-to "events"}}<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Events{{/link-to}}{{/link-to}}
+              {{#link-to "people" tagName="li"}}{{#link-to "people"}}<span class="glyphicon glyphicon-user" aria-hidden="true"></span> People{{/link-to}}{{/link-to}}
+              {{#link-to "organizations" tagName="li"}}{{#link-to "organizations"}}<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Organizations{{/link-to}}{{/link-to}}
+            </ul>
+            {{outlet}}
+          </div>
+        </div>
+      {{else}}
+        {{outlet}}
+      {{/if}}
     </div>
   </div>
+  <div class="row">
+    {{flash-messages}}
+  </div>
 </div>
+

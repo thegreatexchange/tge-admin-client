@@ -2,7 +2,8 @@ import Ember from 'ember';
 import config from './config/environment';
 
 const Router = Ember.Router.extend({
-  location: config.locationType
+  location: config.locationType,
+  rootURL:  config.rootURL
 });
 
 Router.map(function() {
@@ -13,7 +14,15 @@ Router.map(function() {
   });
   this.route('people', function() {
     this.route('new');
-    this.route('person', { path: '/:person_id'});
+    this.route('person', { path: '/:person_id' });
+  });
+  this.route('organizations', function() {
+    this.route('new');
+    this.route('organization', { path: '/:organization_id' });
+  });
+  this.route('events', function() {
+    this.route('new');
+    this.route('event', { path: '/:event_id' });
   });
 });
 

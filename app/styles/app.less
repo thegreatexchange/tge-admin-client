@@ -1,21 +1,14 @@
 @import "bootstrap";
-@import "theme";
+// @import "theme";
+// @import "themes/paper";
+// @import "themes/yeti";
+// @import "themes/flatly";
+// @import "themes/united";
+// @import "themes/sandstone";
+@import "themes/simplex";
+@import "themes/tge";
+@import "extensions/inputs";
+@import "components/flash-messages";
 
-body {
-  margin-top: 70px;
-}
-
-#sidebar-menu {
-  .nav-pills a.active {
-    background-color: @gray-lighter;
-  }
-}
-
-.col-scrollable {
-  overflow: scroll;
-  max-height: 100vh;
-}
-
-.form-actions {
-  text-align: center;
-}
+@import "ember-power-select";
+@import "components/ember-power-select-bootstrap";

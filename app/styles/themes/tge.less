@@ -1,0 +1,50 @@
+// Color Scheme
+// @brand-primary:   #777777;
+// @brand-info:      #a94442;
+// @state-info-text: #a94442;
+
+.navbar-brand img {
+  position: relative;
+  top:      -9px;
+  width:    35px;
+  opacity:  .5;
+}
+
+.logo-lg img {
+  width: 300px;
+  opacity: .5;
+}
+
+.logo-md img {
+  width: 50px;
+  opacity: .75;
+}
+
+.form-actions {
+  text-align:    center;
+  margin-bottom: 20px;
+  margin-top:    20px;
+}
+
+////////////////////////////////////////
+// Layout
+////////////////////////////////////////
+.align-text-left    { text-align: left; }
+.align-text-center  { text-align: center; }
+.align-text-right   { text-align: right; }
+.align-text-justify { text-align: justify; }
+
+.left  { float: left; }
+.right { float: right; }
+.clear { clear: both; }
+
+.generate-spacing-classes(@n, @i: 0, @j: 1) when (@i < @n) {
+  @k: @i + @j;
+  .margin-vertical-@{k}    { margin-top:   1px * @k;  margin-bottom:  1px * @k; }
+  .margin-horizontal-@{k}  { margin-left:  1px * @k;  margin-right:   1px * @k; }
+  .padding-vertical-@{k}   { padding-top:  1px * @k;  padding-bottom: 1px * @k; }
+  .padding-horizontal-@{k} { padding-left: 1px * @k; padding-right:   1px * @k; }
+  .generate-spacing-classes(@n, (@j), @k);
+}
+.generate-spacing-classes(100);
+////////////////////////////////////////

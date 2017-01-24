@@ -1,24 +1,46 @@
-<div class="page-header">
-  <span class="h2 text-info">Add a new contact</span>
-</div>
+<div class="padding-vertical-8"></div>
+{{model-errors model=model}}
 <form>
-  <div class="form-group form-group-lg">
-    {{input value=model.name type="text" class="form-control" placeholder="Name"}}
+  <div class="col-md-12">
+    <div class="form-group">
+      {{input value=model.name type="text" class="form-control" placeholder="Name"}}
+    </div>
   </div>
-  <div class="form-group input-group input-group-lg">
-    <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-    {{input value=model.email class="form-control" type="email" placeholder="Email address"}}
+  <div class="col-md-12">
+    <div class="form-group input-group">
+      <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+      {{input value=model.email class="form-control" type="email" placeholder="Email address"}}
+    </div>
   </div>
-  <div class="form-group input-group input-group-lg">
-    <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
-    {{input value=model.phoneNumber class="form-control" type="text" placeholder="Phone number"}}
+  <div class="col-md-12">
+    <div class="form-group input-group">
+      <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+      {{input value=model.phoneNumber class="form-control" type="text" placeholder="Phone number"}}
+    </div>
   </div>
-  <div class="form-group input-group input-group-lg">
-    <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
-    {{input value=model.location class="form-control" type="text" placeholder="Location"}}
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading h4"><span class="text-info">Organizations</span></div>
+      <ul class="list-group">
+        {{#each model.organizationMemberships as |membership|}}
+          {{#link-to 'organizations.organization' membership.organization.id class="list-group-item"}}
+            {{membership.organization.name}}
+            <span class="text-danger right glyphicon glyphicon-remove" {{action "removeMembership" membership bubbles=false}}></span>
+          {{/link-to}}
+        {{/each}}
+          <li class="list-group-item">
+            {{#power-select options=availableOrganizations
+                            placeholder="Select organization to add..."
+                            searchField="name"
+                            onchange=(action "addOrganization") as |organization|}}
+              {{organization.name}}
+            {{/power-select}}
+          </li>
+      </ul>
+    </div>
   </div>
-  <div class="form-actions">
-    <button type="submit" class="btn btn-primary btn-lg" {{action "save"}}>Add Contact</button>
-    <button class="btn btn-default btn-lg" {{action "cancel"}}>Cancel</button>
+  <div class="form-actions col-md-12">
+    <button type="submit" class="btn btn-primary" {{action "save"}}>Submit</button>
+    <button class="btn btn-default" {{action "cancel"}}>Cancel</button>
   </div>
 </form>

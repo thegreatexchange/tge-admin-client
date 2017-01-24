@@ -1,9 +1,12 @@
 import BaseRoute from '../../../routes/base';
 
 export default BaseRoute.extend({
-
+  ////////////////////////////////////////
+  // Lifecycle hooks
+  ////////////////////////////////////////
   model() {
     return this.store.findAll('person');
   }
+  ////////////////////////////////////////
 
 });

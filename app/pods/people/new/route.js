@@ -1,7 +1,19 @@
-import Ember from 'ember';
+import BaseRoute from '../../../routes/base';
 
-export default Ember.Route.extend({
-  model(){
-    return this.store.createRecord('person');
+export default BaseRoute.extend({
+  ////////////////////////////////////////
+  // Properties
+  ////////////////////////////////////////
+  typeKey:            'person',
+  unloadOnDeactivate: false,
+  ////////////////////////////////////////
+
+  ////////////////////////////////////////
+  // Lifecycle hooks
+  ////////////////////////////////////////
+  model() {
+    return this._createRecord();
   }
+  ////////////////////////////////////////
 });
+

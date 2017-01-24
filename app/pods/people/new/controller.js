@@ -1,26 +1,62 @@
 import BaseController from '../../../controllers/base';
-import Ember          from 'ember';
+import Ember from 'ember';
 
 export default BaseController.extend({
   ////////////////////////////////////////
   // Dependencies
   ////////////////////////////////////////
-  users: Ember.inject.controller('people.index'),
+  people: Ember.inject.controller(),
   ////////////////////////////////////////
 
+  ////////////////////////////////////////
+  // Properties
+  ////////////////////////////////////////
+  availableOrganizations: Ember.computed('model.organizationMemberships.@each.organization', 'people.organizations.@each', function(){
+    return this.get('people.organizations').filter((organization)=>{
+      return !this.get('model.organizationMemberships').mapBy('organization.id').includes(organization.get('id'));
+    });
+  }),
+  resetProperties: function() {
+  },
+  ////////////////////////////////////////
+
+  _addMembershipFor(organization) {
+    let membership = this.store.createRecord('organizationMembership');
+    membership.set('person', this.get('model'));
+    membership.set('organization', organization);
+  },
+
+  _destroyMembershipWithPrompt(membership) {
+    membership.destroy();
+  },
+
+  _persistMemberships(func) {
+    let promises = this.get('model.organizationMemberships').map((membership) => { membership.save(); });
+    Ember.RSVP.all(promises).then(func);
+  },
   ////////////////////////////////////////
   // Actions
   ////////////////////////////////////////
   actions: {
-    save: function() {
-      var _this = this;
-      this.get('model').save().then(function(){
-        _this.transitionToRoute('people.index');
+    save() {
+      this.get('model').save().then((model) => {
+        this._persistMemberships( () => {
+          this.transitionToRoute('people.index');
+          let message = `${model.get('name')} has been created successfully.`;
+          this.get('flashMessages').notifySuccess(message);
+        });
       });
     },
-    cancel: function() {
-      this.transitionToRoute('people');
+    cancel() {
+      this.transitionToRoute('people.index');
+    },
+    addOrganization(organization) {
+      this._addMembershipFor(organization);
+    },
+    removeMembership(membership){
+      this._destroyMembershipWithPrompt(membership);
     }
   }
   ////////////////////////////////////////
 });
+
