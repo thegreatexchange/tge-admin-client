@@ -1,4 +1,5 @@
 import BaseController from '../../../controllers/base';
+import Ember from 'ember';
 
 export default BaseController.extend({
   ////////////////////////////////////////
@@ -19,7 +20,7 @@ export default BaseController.extend({
     });
   }),
 
-  isClearFilterDisabled: Ember.computed('filterText', function(){ return !this.get('filterText') }),
+  isClearFilterDisabled: Ember.computed('filterText', function(){ return !this.get('filterText'); }),
 
   resetProperties: function() {
     this.set('filterText', '');
@@ -28,7 +29,7 @@ export default BaseController.extend({
 
   _destroyMembershipWithPrompt(membership) {
     let personName       = membership.get('person.name');
-    let organizationName = membership.get('organization.name')
+    let organizationName = membership.get('organization.name');
 
     let message = "Are you sure you want to remove " + personName + " from " + organizationName + "?";
     let confirmationResult = window.confirm(message);
@@ -67,7 +68,7 @@ export default BaseController.extend({
       this._destroyMembershipWithPrompt(membership);
     },
     destroy() {
-      name = this.get('model.name');
+      let name = this.get('model.name');
       let didConfirm = window.confirm(`Are you sure you want to remove ${name}?`);
       if (didConfirm){
         this.get('model').destroyRecord().then( () => {

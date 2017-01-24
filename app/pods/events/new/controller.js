@@ -31,7 +31,7 @@ export default BaseController.extend({
       this.transitionToRoute('events.index');
     },
     organizationChanged(organization) {
-      this.set('model.organization', organization)
+      this.set('model.organization', organization);
     }
   }
   ////////////////////////////////////////
