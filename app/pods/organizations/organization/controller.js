@@ -5,12 +5,14 @@ export default BaseController.extend({
   ////////////////////////////////////////
   // Dependencies
   ////////////////////////////////////////
+  mailchimpClient: Ember.inject.service('mailchimp-client'),
   ////////////////////////////////////////
 
   ////////////////////////////////////////
   // Properties
   ////////////////////////////////////////
   filterText: '',
+  mailchimpLists: Ember.computed.alias('mailchimpClient.lists'),
 
   memberships: Ember.computed('model.organizationMemberships.@each.person.name', 'filterText', function() {
     let sortedList = this.get('model.organizationMemberships').sortBy('person.name');
