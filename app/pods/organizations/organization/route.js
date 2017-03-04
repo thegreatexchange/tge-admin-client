@@ -1,4 +1,5 @@
 import BaseRoute from '../../../routes/base';
+// import RSVP      from 'rsvp';
 
 export default BaseRoute.extend({
   ////////////////////////////////////////
@@ -18,8 +19,12 @@ export default BaseRoute.extend({
   // Lifecycle hooks
   ////////////////////////////////////////
   afterModel(model) {
-    this.get('mailchimpClient').refreshLists();
-    return this.store.query('organizationMembership', { organization_id: model.get('id') });
+    let promises = [
+      this.get('mailchimpClient').refreshLists(),
+      this.store.query('organizationMembership', { organization_id: model.get('id') }),
+      this.store.query('organizationList', { organization_id: model.get('id') })
+    ];
+    return Ember.RSVP.all(promises);
   },
   ////////////////////////////////////////
 });

@@ -13,7 +13,26 @@
   </div>
   <div class="col-md-12">
     <div class="panel panel-default">
-      <div class="panel-heading h4"><span class="text-info">Members</span>
+      <div class="panel-heading"><span class="text-info h4">MailChimp Lists</span></div>
+      <ul class="list-group">
+        {{#each organizationLists as |list|}}
+          <a href="#" class="list-group-item">
+            {{list.name}}
+            <span class="text-danger right glyphicon glyphicon-remove" {{action "removeList" list bubbles=false}}></span>
+          </a>
+        {{/each}}
+          <li class="list-group-item">
+            {{#power-select options=mailchimpLists
+                            placeholder="Select MailChimp List to add..."
+                            searchField="name"
+                            onchange=(action "addList") as |list|}}
+              {{list.name}}
+            {{/power-select}}
+          </li>
+      </ul>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading"><span class="text-info h4">Members</span>
       </div>
       <ul class="list-group">
         <li class="list-group-item">

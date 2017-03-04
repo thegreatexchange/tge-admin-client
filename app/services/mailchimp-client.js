@@ -8,7 +8,7 @@ export default Ember.Service.extend({
   lists: [],
 
   refreshLists(callback=Ember.K) {
-    this.get('ajax').request('/mailchimp/lists').then((lists) => {
+    return this.get('ajax').request('/mailchimp/lists').then((lists) => {
       callback.call(this, lists);
       this.set('lists', lists);
     }).catch((errors) => {
