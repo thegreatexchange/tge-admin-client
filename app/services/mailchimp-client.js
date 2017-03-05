@@ -16,4 +16,12 @@ export default Ember.Service.extend({
     });
   },
 
+  groups(listId, callback=Ember.K) {
+    return this.get('ajax').request(`/mailchimp/lists/${listId}/groups`).then((groups) => {
+      callback.call(this, groups);
+    }).catch((errors) => {
+      this.get('flashMessages').notifyDanger(`Could not connect to mailchimp: ${errors.message}`);
+    });
+  }
+
 });
