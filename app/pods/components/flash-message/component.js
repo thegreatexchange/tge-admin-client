@@ -36,7 +36,7 @@ export default Ember.Component.extend({
 
   didRender() {
     if (!this.get('flashMessage.persist')) {
-      Ember.run.later(() => { this.send('dismiss') }, 3000);
+      Ember.run.later(() => { this.send('dismiss'); }, 3000);
     }
   },
   ////////////////////////////////////////
@@ -46,7 +46,7 @@ export default Ember.Component.extend({
   ////////////////////////////////////////
   actions: {
     dismiss(){
-      let element = this.$(this.get('element'))
+      let element = this.$(this.get('element'));
       if (element){
         let alert = element.find('.alert');
         this.$(alert).on('closed.bs.alert', () => {

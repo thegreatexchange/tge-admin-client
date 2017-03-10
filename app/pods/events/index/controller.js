@@ -1,4 +1,5 @@
 import BaseController from '../../../controllers/base';
+import Ember from 'ember';
 
 export default BaseController.extend({
   ////////////////////////////////////////
@@ -19,7 +20,7 @@ export default BaseController.extend({
     });
   }),
 
-  isClearFilterDisabled: Ember.computed('filterText', function(){ return !this.get('filterText') }),
+  isClearFilterDisabled: Ember.computed('filterText', function(){ return !this.get('filterText'); }),
 
   resetProperties: function() {
     this.set('filterText', '');

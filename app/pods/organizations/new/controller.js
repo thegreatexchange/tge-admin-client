@@ -20,7 +20,7 @@ export default BaseController.extend({
     save() {
       this.get('model').save().then((model) => {
         let message;
-        this.transitionToRoute('organizations.index');
+        this.transitionToRoute('organizations.organization', model);
         message = model.get('name');
         message = message + ' has been created successfully.';
         this.get('flashMessages').notifySuccess(message);
