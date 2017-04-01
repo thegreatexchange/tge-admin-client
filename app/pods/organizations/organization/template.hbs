@@ -21,6 +21,13 @@
         {{#each organizationLists as |list|}}
           <a href="#" class="list-group-item">
             {{list.name}}
+            {{#if list.groups.length}}
+              <small class="text-muted">|
+                {{#each list.groups as |group|}}
+                  {{group}} |
+                {{/each}}
+              </small>
+            {{/if}}
             <span class="text-danger right glyphicon glyphicon-remove" {{action "removeList" list bubbles=false}}></span>
           </a>
         {{/each}}

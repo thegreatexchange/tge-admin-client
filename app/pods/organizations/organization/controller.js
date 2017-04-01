@@ -38,7 +38,8 @@ export default BaseController.extend({
       }
       return Ember.Object.create({
         organizationList: organizationList,
-        name: name
+        name: name,
+        groups: organizationList.get('groupNames')
       });
     });
   }),

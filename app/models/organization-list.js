@@ -9,4 +9,15 @@ export default DS.Model.extend({
 
   organization: DS.belongsTo('organization'),
 
+  groupNames: Ember.computed('categories.@each.groups.@each.selected', function() {
+    let groupNames = [];
+    this.get('categories').forEach((category) => {
+      category.groups.forEach((group) =>{
+        if (group.selected) {
+          groupNames.addObject(`${category.name} - ${group.name}`);
+        }
+      });
+    });
+    return groupNames;
+  })
 });
