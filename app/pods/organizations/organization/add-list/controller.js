@@ -13,22 +13,40 @@ export default BaseController.extend({
     { name: 'Add list', type: 'primary', action: 'save' },
     { name: 'Cancel',   type: 'default', action: 'cancel' }
   ],
+  categories: [],
 
   showModal(model) {
+    this._formatGroupData(model.groupData);
     this.set('model', model);
     $('#modal').modal("show");
   },
 
   hideModal() {
     this.set('model', null);
+    this.set('categories', []);
     $('#modal').modal("hide");
   },
 
-  _addOrganizationListFor(list) {
+  _formatGroupData(groupData) {
+    groupData.forEach((c) => {
+      let category = {};
+      category.name = c.name;
+      category.groups = [];
+      c.groups.forEach((g) => {
+        let group = { name: g.name, selected: false };
+        category.groups.addObject(group);
+      });
+      this.get('categories').addObject(category);
+    });
+  },
+
+  _addOrganizationListFor() {
+    let list = this.get('model')
     let organizationList    = this.store.createRecord('organizationList');
     let successMessage;
 
     organizationList.set('mailchimpListId', list.id);
+    organizationList.set('categories', this.get('categories'));
     organizationList.set('organization', this.get('organization.model'));
     organizationList.save().then(() => {
       this.hideModal();
@@ -41,7 +59,7 @@ export default BaseController.extend({
   ////////////////////////////////////////
   actions: {
     save() {
-      this._addOrganizationListFor(this.get('model'));
+      this._addOrganizationListFor();
     },
     cancel() {
       this.hideModal();

@@ -91,6 +91,7 @@ export default BaseController.extend({
     let setupModal = Ember.K
     if (list.id) {
       setupModal = function(groupData) {
+        list.groupData = groupData;
         this.get('addList').showModal(list)
       }
       this.get('mailchimpClient').groups(list.id, setupModal.bind(this));

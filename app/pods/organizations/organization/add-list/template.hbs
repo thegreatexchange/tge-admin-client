@@ -4,5 +4,15 @@
                 save=(action "save")
                 cancel=(action "cancel")
 }}
-  {{ model.name }}
+  <span class="h3">{{ model.name }}</span>
+  {{#each categories as |category|}}
+    <div>
+      <span class="h4">{{category.name}}</span>
+      {{#each category.groups as |group|}}
+        <div>
+          {{input type="checkbox" checked=group.selected}} <span>{{group.name}}</span>
+        </div>
+      {{/each}}
+    </div>
+  {{/each}}
 {{/modal-dialog}}
