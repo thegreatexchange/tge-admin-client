@@ -1,5 +1,6 @@
 <div class="padding-vertical-8"></div>
 {{model-errors model=model}}
+{{render 'organizations/organization/add-list'}}
 <form>
   <div class="col-md-12">
     <div class="form-group">
@@ -13,11 +14,20 @@
   </div>
   <div class="col-md-12">
     <div class="panel panel-default">
-      <div class="panel-heading"><span class="text-info h4">MailChimp lists</span></div>
+      <div class="panel-heading">
+        <span class="text-info h4">MailChimp lists</span>
+      </div>
       <ul class="list-group">
         {{#each organizationLists as |list|}}
           <a href="#" class="list-group-item">
             {{list.name}}
+            {{#if list.groups.length}}
+              <small class="text-muted">|
+                {{#each list.groups as |group|}}
+                  {{group}} |
+                {{/each}}
+              </small>
+            {{/if}}
             <span class="text-danger right glyphicon glyphicon-remove" {{action "removeList" list bubbles=false}}></span>
           </a>
         {{/each}}
