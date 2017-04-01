@@ -6,12 +6,14 @@ export default BaseController.extend({
   // Dependencies
   ////////////////////////////////////////
   mailchimpClient: Ember.inject.service('mailchimp-client'),
+  addList:         Ember.inject.controller('organizations.organization.add-list'),
   ////////////////////////////////////////
 
   ////////////////////////////////////////
   // Properties
   ////////////////////////////////////////
-  filterText: '',
+  filterText:   '',
+
   mailchimpLists: Ember.computed('mailchimpClient.lists', 'model.organizationLists.[]', function(){
     return this.get('mailchimpClient.lists').filter((list) => {
       return !this.get('model.organizationLists').mapBy('mailchimpListId').includes(list.id);
@@ -70,21 +72,6 @@ export default BaseController.extend({
     });
   },
 
-  _addOrganizationListFor(list) {
-    let confirmationMessage = `Are you sure you want to add the organization to the ${list.name} MailChimp List?`;
-    let confirmationResult  = window.confirm(confirmationMessage);
-    let organizationList    = this.store.createRecord('organizationList');
-    let successMessage;
-
-    if (confirmationResult) {
-      organizationList.set('mailchimpListId', list.id);
-      organizationList.set('organization', this.get('model'));
-      organizationList.save().then(() => {
-        successMessage = `Successfully added ${this.get('model.name')} to the ${list.name} MailChimp List.`;
-        this.get('flashMessages').notifySuccess(successMessage);
-      });
-    }
-  },
 
   _destroyOrganizationListFor(list) {
     let organizationList    = list.get('organizationList');
@@ -99,6 +86,17 @@ export default BaseController.extend({
       });
     }
   },
+
+  _addList(list){
+    let setupModal = Ember.K
+    if (list.id) {
+      setupModal = function(groupData) {
+        this.get('addList').showModal(list)
+      }
+      this.get('mailchimpClient').groups(list.id, setupModal.bind(this));
+    }
+  },
+
   ////////////////////////////////////////
   // Actions
   ////////////////////////////////////////
@@ -119,7 +117,7 @@ export default BaseController.extend({
       this._destroyMembershipWithPrompt(membership);
     },
     addList(list) {
-      this._addOrganizationListFor(list);
+      this._addList(list);
     },
     removeList(list) {
       this._destroyOrganizationListFor(list);
